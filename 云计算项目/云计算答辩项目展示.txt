@@ -1,0 +1,21 @@
+hadoop fs -chmod -R 777 /tmp
+start-all.sh
+jps
+查看文件目录:
+hadoop fs -ls /
+文件上传：
+hadoop fs -put /root/test1.txt   /input
+hadoop fs -appendToFile /root/test2.txt /input/test1.txt
+文件获取：
+hadoop fs -cat /input/test1.txt
+文件下载：
+hadoop fs -get /input/test1.txt  /root/test1.txt
+文件删除：
+hadoop fs -rm -r /input/test1.txt
+启动hive：
+nohup /export/server/apache-hive-3.1.2-bin/bin/hive --service metastore &
+nohup /export/server/apache-hive-3.1.2-bin/bin/hive --service hiveserver2 &
+beeline客户端连接：
+/usr/local/apache-hive-3.1.2-bin/bin/beeline
+ ! connect jdbc:hive2://192.168.5.128:10000
+
